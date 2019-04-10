@@ -1,0 +1,17 @@
+#!/bin/sh
+#
+# PROVIDE: kms_server 
+# REQUIRE: LOGIN
+# KEYWORD: shutdown
+#
+# Add the following to /etc/rc.conf[.local] to enable this service
+#
+# kms_server_enable="YES"
+#
+. /etc/rc.subr
+name="kms_server"
+rcvar="${name}_enable"
+command="/usr/local/bin/python2.7"
+command_args="/usr/local/share/py-kms/server.py &"
+load_rc_config ${name}
+run_rc_command "$1"
